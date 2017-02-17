@@ -1,0 +1,35 @@
+apply plugin: 'java'
+
+apply plugin: 'application'
+
+repositories{
+	jcenter()
+}
+
+
+dependencies {
+    // The production code uses Guava
+    compile 'com.google.guava:guava:20.0'
+
+    compile group: 'log4j', name: 'log4j', version: '1.2.17'
+
+    compile group: 'com.amazonaws', name: 'aws-java-sdk', version: '1.11.89'
+
+    runtime files('lib/AthenaJDBC41-1.0.0.jar')
+
+    compile group: 'commons-cli', name: 'commons-cli', version: '1.3.1'
+
+    // Use JUnit test framework
+    testCompile 'junit:junit:4.12'
+}
+
+
+
+
+mainClassName= 'hello.HelloWorld'
+
+jar{
+	manifest{
+		attributes 'Main-Class': 'hello.HelloWorld'
+	}
+}
